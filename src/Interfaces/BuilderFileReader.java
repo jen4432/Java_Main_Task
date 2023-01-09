@@ -1,5 +1,5 @@
 package Interfaces;
-import BuilderFileReader.FileReader;
+import BuilderFileReader.FileReaderImpl;
 import BuilderFileReader.FileExtension;
 
 public interface BuilderFileReader {
@@ -9,6 +9,6 @@ public interface BuilderFileReader {
     public void setEncrypting(String key);
 
     public void setZipping(boolean isZip);
-    public FileReader build();
+    public FileReaderImpl build();
 
 }

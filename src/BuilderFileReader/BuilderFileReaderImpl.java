@@ -6,20 +6,19 @@ import Readers.XmlFileReader;
 
 public class BuilderFileReaderImpl implements BuilderFileReader {
 
-    private FileReader fileReader;
+    private FileReaderImpl fileReader;
 
     public BuilderFileReaderImpl(){
 
     }
     @Override
     public void setFileName(String name,FileExtension extension) {
-        fileReader.name = name;
         if(extension == FileExtension.Txt){
-            fileReader = new TxtFileReader();
+            fileReader = new TxtFileReader(name);
         }else if(extension == FileExtension.Json){
-            fileReader = new JsonFileReader();
+            fileReader = new JsonFileReader(name);
         }else if(extension == FileExtension.Xml) {
-            fileReader = new XmlFileReader();
+            fileReader = new XmlFileReader(name);
         }
     }
 
@@ -33,7 +32,7 @@ public class BuilderFileReaderImpl implements BuilderFileReader {
     }
 
     @Override
-    public FileReader build() {
+    public FileReaderImpl build() {
         return fileReader;
     }
 }

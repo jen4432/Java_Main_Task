@@ -1,6 +1,17 @@
 package Readers;
 
-import BuilderFileReader.FileReader;
+import BuilderFileReader.FileReaderImpl;
 
-public class XmlFileReader extends FileReader {
+import java.util.ArrayList;
+
+public class XmlFileReader extends FileReaderImpl {
+
+    public XmlFileReader(String fileName){
+        this.fileName = fileName;
+    }
+
+    @Override
+    public ArrayList<String> read(){
+        return null;
+    }
 }

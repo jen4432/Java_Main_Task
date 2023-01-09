@@ -1,9 +1,17 @@
 package Readers;
 
-import BuilderFileReader.FileReader;
+import BuilderFileReader.FileReaderImpl;
 
-public class JsonFileReader extends FileReader {
+import java.util.ArrayList;
+
+public class JsonFileReader extends FileReaderImpl {
+
+    public JsonFileReader(String fileName){
+        this.fileName = fileName;
+    }
 
     @Override
-    public void read(){}
+    public ArrayList<String> read(){
+        return null;
+    }
 }
