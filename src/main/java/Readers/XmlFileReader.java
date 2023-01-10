@@ -1,7 +1,11 @@
 package Readers;
 
 import BuilderFileReader.FileReaderImpl;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.util.ArrayList;
 
 public class XmlFileReader extends FileReaderImpl {
@@ -9,9 +13,22 @@ public class XmlFileReader extends FileReaderImpl {
     public XmlFileReader(String fileName){
         this.fileName = fileName;
     }
-
     @Override
     public ArrayList<String> read(){
-        return null;
+        File file = new File(fileName);
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        Document doc = null;
+        ArrayList<String> list = new ArrayList<String>();
+        try{
+            doc = dbf.newDocumentBuilder().parse(file);
+            NodeList nodeList = doc.getElementsByTagName("element");
+            for(int i = 0; i < nodeList.getLength();i++){
+                list.add(nodeList.item(i).getTextContent());
+            }
+
+        }catch (Exception e){
+            System.out.println("Error:" + e.toString());
+        }
+        return list;
     }
 }

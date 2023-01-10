@@ -10,11 +10,9 @@ import java.util.ArrayList;
 
 public class TxtFileReader extends FileReaderImpl {
 
-
     public TxtFileReader(String fileName){
         this.fileName = fileName;
     }
-
     @Override
     public ArrayList<String> read() throws IOException {
         BufferedReader br = null;
