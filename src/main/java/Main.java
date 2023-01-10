@@ -1,6 +1,6 @@
 import BuilderFileReader.BuilderFileReaderImpl;
 import BuilderFileReader.FileReaderImpl;
-import Readers.JsonFileReader;
+import Parsers.Calculator;
 
 import java.io.IOException;
 
@@ -10,8 +10,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl();
         builderFileReader.setFileName("src/test.txt",Txt);
+
         FileReaderImpl fileReader = builderFileReader.build();
         System.out.println(fileReader.getClass());
-        fileReader.read();
+
+        System.out.println(Calculator.CalculateLines(fileReader.read()));
+
+
+
     }
 }
