@@ -1,0 +1,20 @@
+{
+  "expressions" : [
+    {
+      "expression" : "2 + 13"
+    },
+    {
+      "expression" : "5/3"
+    },
+    {
+      "expression" : "4 * 100"
+    },
+    {
+      "expression" : "4 - 75"
+    },
+    {
+      "expression" : "2*(3-4)*3"
+    }
+
+  ]
+}

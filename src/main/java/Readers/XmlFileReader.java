@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class XmlFileReader extends FileReaderImpl {
 
+    private static final String TAG_ELEMENT = "element";
+
     public XmlFileReader(String fileName){
         this.fileName = fileName;
     }
@@ -21,7 +23,7 @@ public class XmlFileReader extends FileReaderImpl {
         ArrayList<String> list = new ArrayList<String>();
         try{
             doc = dbf.newDocumentBuilder().parse(file);
-            NodeList nodeList = doc.getElementsByTagName("element");
+            NodeList nodeList = doc.getElementsByTagName(TAG_ELEMENT);
             for(int i = 0; i < nodeList.getLength();i++){
                 list.add(nodeList.item(i).getTextContent());
             }
