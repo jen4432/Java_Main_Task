@@ -1,3 +1,4 @@
+import Archiver.ArchivingFileManager;
 import BuilderFileReader.BuilderFileReaderImpl;
 import BuilderFileReader.FileReaderImpl;
 import Cipher.Crypto;
@@ -8,10 +9,7 @@ import static BuilderFileReader.FileExtension.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String inputFileName = "src/output.txt";
-        String outputFileName = "src/result.txt";
-
-        Crypto.decrypt("abc","src/output.txt",outputFileName);
+        ArchivingFileManager.zippingFile("src/TestingFiles/testziping.txt");
 
     }
 }
