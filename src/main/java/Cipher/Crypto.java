@@ -15,10 +15,10 @@ import java.util.Base64;
 public class Crypto {
     private static final String ALGORITHM = "AES";
 
-    public static void encrypt(String key, String inputFilename, String outputFilename) {
+    public static void encrypt(String key, String inputFileName, String outputFileName) {
         try {
-            File inputFile = new File(inputFilename);
-            File outputFile = new File(outputFilename);
+            File inputFile = new File(inputFileName);
+            File outputFile = new File(outputFileName);
             Key secretKey = new SecretKeySpec(Arrays.copyOf(key.getBytes(), 16), ALGORITHM);
             Cipher cipher = Cipher.getInstance(ALGORITHM);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -26,8 +26,8 @@ public class Crypto {
             FileInputStream inputStream = new FileInputStream(inputFile);
             byte[] inputBytes = inputStream.readAllBytes();
 
-            byte[] outputBytes;
             FileOutputStream outputStream = new FileOutputStream(outputFile);
+            byte[] outputBytes;
 
             outputBytes = cipher.doFinal(inputBytes);
             outputStream.write(Base64.getEncoder().encode(outputBytes));
@@ -35,6 +35,31 @@ public class Crypto {
             outputStream.close();
 
         }catch (Exception e){
+            System.out.println("Error : " + e.toString());
+        }
+
+    }
+
+    public static void decrypt(String key,String inputFileName,String outputFileName){
+        try {
+            File inputFile = new File(inputFileName);
+            File outputFile = new File(outputFileName);
+            Key secretKey = new SecretKeySpec(Arrays.copyOf(key.getBytes(),16),ALGORITHM);
+            Cipher decryptCipher = Cipher.getInstance(ALGORITHM);
+            decryptCipher.init(Cipher.DECRYPT_MODE,secretKey);
+
+            FileInputStream inputStream = new FileInputStream(inputFile);
+            byte[] inputBytes = inputStream.readAllBytes();
+
+            FileOutputStream outputStream = new FileOutputStream(outputFile);
+            byte[] outputBytes;
+
+            outputBytes = decryptCipher.doFinal(Base64.getDecoder().decode(inputBytes));
+            outputStream.write(outputBytes);
+            inputStream.close();
+            outputStream.close();
+
+        } catch (Exception e) {
             System.out.println("Error : " + e.toString());
         }
 
