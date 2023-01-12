@@ -9,7 +9,8 @@ import static BuilderFileReader.FileExtension.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        ArchivingFileManager.zippingFile("src/TestingFiles/testziping.txt");
+        //ArchivingFileManager.zippingFile("src/TestingFiles/testziping.txt");
+        ArchivingFileManager.unZippingFile("src/TestingFiles/testziping.zip");
 
     }
 }

@@ -1,9 +1,11 @@
 package Archiver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public class ArchivingFileManager {
@@ -31,5 +33,22 @@ public class ArchivingFileManager {
         }
     }
 
+    public static void unZippingFile(String archiveName) {
+        try {
+            ZipInputStream zin = new ZipInputStream(new FileInputStream(archiveName));
+            ZipEntry entry = null;
+            while((entry = zin.getNextEntry()) != null) {
+                FileOutputStream fout = new FileOutputStream(entry.getName());
+                for (int c = zin.read(); c != -1; c = zin.read()) {
+                    fout.write(c);
+                }
+                fout.flush();
+                zin.closeEntry();
+                fout.close();
+            }
 
+        } catch (Exception e) {
+            System.out.println("Error : " + e.toString());
+        }
+    }
 }
