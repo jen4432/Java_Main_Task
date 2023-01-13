@@ -5,6 +5,7 @@ import BuilderFileWriter.BuilderFileWriterImpl;
 import Cipher.Crypto;
 import Interfaces.IFileReader;
 import Interfaces.IFileWriter;
+import Writers.XmlFileWriter;
 
 import java.io.IOException;
 
@@ -28,7 +29,7 @@ public class Main {
 
         IFileReader fileReader = builderFileReader.build();
 
-        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/output.txt",Txt);
+        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/output.xml", Xml);
 
         IFileWriter fileWriter = builderFileWriter.build();
 
