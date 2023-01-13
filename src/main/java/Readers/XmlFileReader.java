@@ -15,6 +15,11 @@ public class XmlFileReader extends FileReaderImpl {
     public XmlFileReader(String fileName){
         this.fileName = fileName;
     }
+
+    @Override
+    public String getFileName(){
+        return fileName;
+    }
     @Override
     public ArrayList<String> read(){
         File file = new File(fileName);

@@ -1,18 +1,19 @@
 package BuilderFileReader;
-import Interfaces.BuilderFileReader;
-import Readers.JsonFileReader;
-import Readers.TxtFileReader;
-import Readers.XmlFileReader;
+import Interfaces.IBuilderFileReader;
+import Interfaces.IFileReader;
+import Readers.*;
 
-public class BuilderFileReaderImpl implements BuilderFileReader {
+public class BuilderFileReaderImpl implements IBuilderFileReader {
 
-    private FileReaderImpl fileReader;
+    private IFileReader fileReader;
+    private String key;
 
     public BuilderFileReaderImpl(){
 
     }
     @Override
     public void setFileName(String name,FileExtension extension) {
+
         if(extension == FileExtension.Txt){
             fileReader = new TxtFileReader(name);
         }else if(extension == FileExtension.Json){
@@ -24,15 +25,17 @@ public class BuilderFileReaderImpl implements BuilderFileReader {
 
     @Override
     public void setEncrypting(String key) {
-
+        this.key = key;
+        fileReader = new EncryptedFileReader(fileReader);
     }
 
     @Override
-    public void setZipping(boolean isZip) {
+    public void setZipping() {
+        fileReader = new ZippingFileReader(fileReader);
     }
 
     @Override
-    public FileReaderImpl build() {
+    public IFileReader build() {
         return fileReader;
     }
 }

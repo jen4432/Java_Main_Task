@@ -33,12 +33,15 @@ public class ArchivingFileManager {
         }
     }
 
-    public static void unZippingFile(String archiveName) {
+    public static String unZippingFile(String archiveName) {
+        String fileName = null;
         try {
+
             ZipInputStream zin = new ZipInputStream(new FileInputStream(archiveName));
             ZipEntry entry = null;
             while((entry = zin.getNextEntry()) != null) {
                 FileOutputStream fout = new FileOutputStream(entry.getName());
+                fileName = entry.getName();
                 for (int c = zin.read(); c != -1; c = zin.read()) {
                     fout.write(c);
                 }
@@ -49,6 +52,8 @@ public class ArchivingFileManager {
 
         } catch (Exception e) {
             System.out.println("Error : " + e.toString());
+        }finally {
+            return fileName;
         }
     }
 }

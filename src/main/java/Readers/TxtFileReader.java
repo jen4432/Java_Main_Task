@@ -13,6 +13,11 @@ public class TxtFileReader extends FileReaderImpl {
     public TxtFileReader(String fileName){
         this.fileName = fileName;
     }
+
+    @Override
+    public String getFileName(){
+        return fileName;
+    }
     @Override
     public ArrayList<String> read() throws IOException {
         BufferedReader br = null;

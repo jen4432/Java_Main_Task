@@ -18,6 +18,12 @@ public class JsonFileReader extends FileReaderImpl {
     public JsonFileReader(String fileName){
         this.fileName = fileName;
     }
+
+    @Override
+    public String getFileName(){
+        return fileName;
+    }
+
     @Override
     public ArrayList<String> read(){
 

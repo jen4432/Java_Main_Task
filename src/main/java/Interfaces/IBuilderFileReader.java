@@ -2,13 +2,13 @@ package Interfaces;
 import BuilderFileReader.FileReaderImpl;
 import BuilderFileReader.FileExtension;
 
-public interface BuilderFileReader {
+public interface IBuilderFileReader {
 
     public void setFileName(String name, FileExtension extension);
 
     public void setEncrypting(String key);
 
-    public void setZipping(boolean isZip);
-    public FileReaderImpl build();
+    public void setZipping();
+    public IFileReader build();
 
 }
