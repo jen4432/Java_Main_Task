@@ -1,8 +1,10 @@
 import Archiver.ArchivingFileManager;
 import BuilderFileReader.BuilderFileReaderImpl;
 import BuilderFileReader.FileReaderImpl;
+import BuilderFileWriter.BuilderFileWriterImpl;
 import Cipher.Crypto;
 import Interfaces.IFileReader;
+import Interfaces.IFileWriter;
 
 import java.io.IOException;
 
@@ -15,11 +17,21 @@ public class Main {
         Crypto.encrypt("bca","src/TestingFiles/input.txt","src/TestingFiles/input.txt");
         ArchivingFileManager.zippingFile("src/TestingFiles/input.txt");*/
 
-        BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl("src/TestingFiles/input.txt",Txt);
+        /*BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl("src/TestingFiles/input.txt",Txt);
         builderFileReader.setEncrypting("abc");
         builderFileReader.setEncrypting("bca");
         builderFileReader.setZipping();
         IFileReader fileReader = builderFileReader.build();
-        System.out.println(fileReader.read());
+        System.out.println(fileReader.read());*/
+
+        BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl("src/TestingFiles/input.txt",Txt);
+
+        IFileReader fileReader = builderFileReader.build();
+
+        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/output.txt",Txt);
+
+        IFileWriter fileWriter = builderFileWriter.build();
+
+        fileWriter.write(fileReader.read());
     }
 }
