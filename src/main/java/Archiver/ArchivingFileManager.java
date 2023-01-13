@@ -10,7 +10,7 @@ import java.util.zip.ZipOutputStream;
 
 public class ArchivingFileManager {
 
-    private static String createNameZipFile(String fileName){
+    public static String createNameZipFile(String fileName){
         int lastIndexOf = fileName.lastIndexOf(".");
         return fileName.substring(0,lastIndexOf) + ".zip";
     }

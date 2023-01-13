@@ -6,14 +6,8 @@ import Readers.*;
 public class BuilderFileReaderImpl implements IBuilderFileReader {
 
     private IFileReader fileReader;
-    private String key;
 
-    public BuilderFileReaderImpl(){
-
-    }
-    @Override
-    public void setFileName(String name,FileExtension extension) {
-
+    public BuilderFileReaderImpl(String name,FileExtension extension){
         if(extension == FileExtension.Txt){
             fileReader = new TxtFileReader(name);
         }else if(extension == FileExtension.Json){
@@ -25,8 +19,7 @@ public class BuilderFileReaderImpl implements IBuilderFileReader {
 
     @Override
     public void setEncrypting(String key) {
-        this.key = key;
-        fileReader = new EncryptedFileReader(fileReader);
+        fileReader = new EncryptedFileReader(fileReader,key);
     }
 
     @Override

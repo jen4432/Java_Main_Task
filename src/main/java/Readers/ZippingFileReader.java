@@ -1,5 +1,6 @@
 package Readers;
 
+import Archiver.ArchivingFileManager;
 import Interfaces.IFileReader;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class ZippingFileReader implements IFileReader {
     }
     @Override
     public ArrayList<String> read() throws IOException {
+        ArchivingFileManager.unZippingFile(ArchivingFileManager.createNameZipFile(fileReader.getFileName()));
         return fileReader.read();
     }
 
