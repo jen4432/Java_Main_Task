@@ -20,4 +20,19 @@ public class CalculateTest {
         assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
 
     }
+
+    @Test
+    public void testAverageExpression(){
+        String expression = "3*(2-3)";
+        String expectedAnswer = "-3.0";
+        assertEquals(expectedAnswer, Calculator.CalculateLine(expression));
+
+        expression = "14/(7-5)*2";
+        expectedAnswer = "14.0";
+        assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
+
+        expression = "12-(100/25)+(10)";
+        expectedAnswer = "18.0";
+        assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
+    }
 }
