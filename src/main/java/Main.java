@@ -5,6 +5,7 @@ import BuilderFileWriter.BuilderFileWriterImpl;
 import Cipher.Crypto;
 import Interfaces.IFileReader;
 import Interfaces.IFileWriter;
+import Parsers.Calculator;
 import Writers.XmlFileWriter;
 
 import java.io.IOException;
@@ -29,10 +30,10 @@ public class Main {
 
         IFileReader fileReader = builderFileReader.build();
 
-        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/output.xml", Xml);
+        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/output.json", Json);
 
         IFileWriter fileWriter = builderFileWriter.build();
 
-        fileWriter.write(fileReader.read());
+        fileWriter.write(Calculator.CalculateLines(fileReader.read()));
     }
 }
