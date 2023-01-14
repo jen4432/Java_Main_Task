@@ -35,4 +35,19 @@ public class CalculateTest {
         expectedAnswer = "18.0";
         assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
     }
+
+    @Test
+    public void testDifficultExpression(){
+        String expression = "3*(3*(3*(3)))";
+        String expectedAnswer = "81.0";
+        assertEquals(expectedAnswer, Calculator.CalculateLine(expression));
+
+        expression = "(14-(3*2/(2-3)))";
+        expectedAnswer = "20.0";
+        assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
+
+        expression = "17*2-((12-11)*((4) - 3))";
+        expectedAnswer = "33.0";
+        assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
+    }
 }
