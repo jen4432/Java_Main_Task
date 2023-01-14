@@ -50,4 +50,19 @@ public class CalculateTest {
         expectedAnswer = "33.0";
         assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
     }
+
+    @Test
+    public void testDivisionByZero(){
+        String expression = "1/0";
+        String expectedAnswer = "Division by zero!";
+        assertEquals(expectedAnswer, Calculator.CalculateLine(expression));
+
+        expression = "2- (14/0)";
+        expectedAnswer = "Division by zero!";
+        assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
+
+        expression = "100/((13-13) + (100-50)*(2-2))";
+        expectedAnswer = "Division by zero!";
+        assertEquals(expectedAnswer,Calculator.CalculateLine(expression));
+    }
 }
