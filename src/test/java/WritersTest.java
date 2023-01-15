@@ -1,5 +1,7 @@
 import Readers.TxtFileReader;
+import Readers.XmlFileReader;
 import Writers.TxtFileWriter;
+import Writers.XmlFileWriter;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,6 +18,15 @@ public class WritersTest {
         txtFileWriter.write(expected);
         TxtFileReader txtFileReader = new TxtFileReader("src/TestingFiles/TestOutputTxt.txt");
         ArrayList<String> actual = txtFileReader.read();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void XmlWriteTest(){
+        XmlFileWriter xmlFileWriter = new XmlFileWriter("src/TestingFiles/TestOutputXml.xml");
+        xmlFileWriter.write(expected);
+        XmlFileReader xmlFileReader = new XmlFileReader("src/TestingFiles/TestOutputXml.xml");
+        ArrayList<String> actual = xmlFileReader.read();
         assertEquals(expected,actual);
     }
 }
