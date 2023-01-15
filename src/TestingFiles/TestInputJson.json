@@ -1,0 +1,13 @@
+{
+  "expressions" : [
+    {
+      "expression" : "3-4+2"
+    },
+    {
+      "expression" : "100-10"
+    },
+    {
+      "expression" : "20/0"
+    }
+  ]
+}

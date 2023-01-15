@@ -1,3 +1,4 @@
+import Readers.JsonFileReader;
 import Readers.TxtFileReader;
 import Readers.XmlFileReader;
 import org.junit.Test;
@@ -33,6 +34,8 @@ public class ReadersTest {
 
     @Test
     public void JsonFileReaderTest(){
-
+        JsonFileReader jsonFileReader = new JsonFileReader("src/TestingFiles/TestInputJson.json");
+        ArrayList<String> actual = jsonFileReader.read();
+        assertEquals(expected,actual);
     }
 }
