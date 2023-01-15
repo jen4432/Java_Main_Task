@@ -33,7 +33,7 @@ public class TestFullProgram {
     public void TestInputXml() throws IOException {
         BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl("src/TestingFiles/TestInputXml.xml", FileExtension.Xml);
         IFileReader fileReader = builderFileReader.build();
-        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/TestOutputXml.Txt",FileExtension.Txt);
+        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/TestOutputTxt.Txt",FileExtension.Txt);
         IFileWriter writer = builderFileWriter.build();
         writer.write(Calculator.CalculateLines(fileReader.read()));
 
@@ -47,7 +47,7 @@ public class TestFullProgram {
     public void TestInputJson() throws IOException {
         BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl("src/TestingFiles/TestInputJson.json", FileExtension.Json);
         IFileReader fileReader = builderFileReader.build();
-        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/TestOutputXml.Txt",FileExtension.Txt);
+        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/TestOutputTxt.Txt",FileExtension.Txt);
         IFileWriter writer = builderFileWriter.build();
         writer.write(Calculator.CalculateLines(fileReader.read()));
 
