@@ -56,4 +56,25 @@ public class TestFullProgram {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void DoubleEncryptedAndZippingTest() throws IOException {
+
+        ArrayList<String> expected = new ArrayList<String>(Arrays.asList("4.0","6.0","4.0"));
+
+        BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl("src/TestingFiles/input.txt",FileExtension.Txt);
+        builderFileReader.setEncrypting("abc");
+        builderFileReader.setEncrypting("bca");
+        builderFileReader.setZipping();
+        IFileReader fileReader = builderFileReader.build();
+
+        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/TestOutputTxt.txt",FileExtension.Txt);
+
+        IFileWriter fileWriter = builderFileWriter.build();
+        fileWriter.write(Calculator.CalculateLines(fileReader.read()));
+
+        TxtFileReader txtFileReader = new TxtFileReader("src/TestingFiles/TestOutputTxt.txt");
+
+        assertEquals(expected,txtFileReader.read());
+    }
 }
