@@ -28,4 +28,18 @@ public class TestFullProgram {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void TestInputXml() throws IOException {
+        BuilderFileReaderImpl builderFileReader = new BuilderFileReaderImpl("src/TestingFiles/TestInputXml.xml", FileExtension.Xml);
+        IFileReader fileReader = builderFileReader.build();
+        BuilderFileWriterImpl builderFileWriter = new BuilderFileWriterImpl("src/TestingFiles/TestOutputXml.Txt",FileExtension.Txt);
+        IFileWriter writer = builderFileWriter.build();
+        writer.write(Calculator.CalculateLines(fileReader.read()));
+
+        TxtFileReader txtFileReader = new TxtFileReader("src/TestingFiles/TestOutputTxt.txt");
+        ArrayList<String> actual = txtFileReader.read();
+
+        assertEquals(expected,actual);
+    }
 }
