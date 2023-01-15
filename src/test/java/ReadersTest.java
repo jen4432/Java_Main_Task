@@ -23,7 +23,7 @@ public class ReadersTest {
     }
 
     @Test
-    public void XmlFileReadeTest(){
+    public void XmlFileReaderTest(){
         XmlFileReader xmlFileReader = new XmlFileReader("src/TestingFiles/TestInputXml.xml");
         ArrayList<String> actual = xmlFileReader.read();
         System.out.println(actual);
@@ -31,4 +31,8 @@ public class ReadersTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void JsonFileReaderTest(){
+
+    }
 }
